@@ -11,9 +11,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# [START anthosconfig_quickstart_namespaces_hello_namespace] 
+# [START anthosconfig_quickstart_resources_service_hello] 
 apiVersion: v1
-kind: Namespace
+kind: Service
 metadata:
-  name: goodbye
-# [END anthosconfig_quickstart_namespaces_hello_namespace] 
+  name: hello
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector:
+    app: hello
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+# [END anthosconfig_quickstart_resources_service_hello] 
